@@ -218,7 +218,7 @@ function do_loop_till_working(){
 }
 
 
-document.querySelector("#captcha-widget-main").style.pointerEvents = 'none'//Makes the captcha unclickable
+document.querySelector("#captcha-widget-main").style.pointerEvents = 'none'
 
 node1 = document.querySelector("#postform > div.postform__raw.postform__raw_flex.captcha > input.captcha__val.input")
 node2 = document.querySelector("#qr-postform > div.postform__raw.postform__raw_flex.captcha > input.captcha__val.input")
