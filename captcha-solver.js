@@ -38,7 +38,7 @@ function mini_helper_captcha_solver(image_data_base64){
           return;
           }
 
-          // Examine the text in the response
+        
           captcha_result = response.json().then(
                 function(response) {
                   console.log("WE DID REDDIT", response);
@@ -53,21 +53,21 @@ function mini_helper_captcha_solver(image_data_base64){
 
 }
 function handle_response(response, do_polling){
-    captcha_result = response.data[0] //+ "BAD"
+    captcha_result = response.data[0] 
     console.log("The captcha is: ", captcha_result)
 
     $("#qr-postform > div.postform__raw.postform__raw_flex.captcha > input.captcha__val.input").val(captcha_result);
     $("#postform > div.postform__raw.postform__raw_flex.captcha > input.captcha__val.input").val(captcha_result);
 
-    let post_success = "Сообщение успешно отправлено" //Post was successful
-    let captcha_failed = "Капча невалидна" //captcha failled
+    let post_success = "Сообщение успешно отправлено" 
+    let captcha_failed = "Капча невалидна" 
     let captcha_cancelled = "Отправка сообщения отменена"
 
     if (do_polling){
        
     }else{
       setTimeout(function() {
-            // $("#qr-submit").click()
+            
             $("#submit").click()
       }, 1000);
 
@@ -82,10 +82,10 @@ function handle_response(response, do_polling){
 
       if (a.includes(post_success)){
 
-        // setTimeout(function() {
+        
         clearInterval(pollingFunc);
         clearInterval(clear_me_please_interval);
-        // }, 100);
+       
         setTimeout(function() {
           pollingFunc = setInterval(function() {do_loop_till_working();}, 900);
         }, 900);
@@ -94,18 +94,18 @@ function handle_response(response, do_polling){
 
         console.log("post_success")
       }
-      if (a.includes(captcha_failed)  ){//TODO: while-loop
+      if (a.includes(captcha_failed)  ){
         clearInterval(pollingFunc);
         clearInterval(clear_me_please_interval);
 
         console.log("captcha_failed")
 
-        //clicks it (this is why the fastest)
+    
         setTimeout(function() {
           document.querySelector("#captcha-widget-main > img").click()
         }, 500);
 
-        //Loaded the image, right ? now pull the image url
+        
         setTimeout(function() {
           try{
             url = document.querySelector("#captcha-widget-main > img")['src'];
